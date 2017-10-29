@@ -5,6 +5,7 @@ You can use this construction in WP_Query:
 ```php
  $new_query = new WP_Query( array(
     'post_type' => 'post',
+    'ignore_sticky_posts' => true,
     'meta_query' => array(
          array(
              'key' => '_is_featured',
