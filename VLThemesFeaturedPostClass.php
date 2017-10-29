@@ -47,6 +47,7 @@ class VLThemesFeaturedPost {
 	 * Admin Init
 	 */
 	public function admin_init() {
+		add_filter( 'display_post_states', array( $this, 'featured_post_states' ) );
 		add_action( 'new_to_publish', array( $this, 'set_not_featured' ), 1, 2 );
 		add_action( 'draft_to_publish', array( $this, 'set_not_featured' ), 1, 2 );
 		add_action( 'pending_to_publish', array( $this, 'set_not_featured' ), 1, 2 );
@@ -57,6 +58,16 @@ class VLThemesFeaturedPost {
 		add_action( 'post_submitbox_misc_actions', array( $this, 'edit_screen_featured_ui' ) );
 		add_action( 'save_post', array( $this, 'edit_screen_featured_save' ) );
 	}
+
+
+	public function featured_post_states( $states ) {
+		global $post;
+		if ( get_post_meta( $post->ID, '_is_featured', true ) === 'yes' ) {
+			$states[] = esc_html__( 'Featured', 'ramsay' );
+		}
+		return $states;
+	}
+
 
 	public function manage_posts_columns( $columns ) {
 		$columns['featured'] = esc_html__( 'Featured', 'ramsay' );
