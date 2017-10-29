@@ -78,14 +78,12 @@ class VLThemesFeaturedPost {
 		if ( $column_name == 'featured' ) {
 			$is_featured = get_post_meta( $postID, '_is_featured', true );
 			$class = 'dashicons';
-			$text = '';
 			if ( $is_featured == 'yes' ) {
 			   $class .= ' dashicons-star-filled';
-			   $text = '';
 			} else {
 			   $class .= ' dashicons-star-empty';
 			}
-			echo '<a href="#!featured-toggle" class="featured-post-toggle '.$class.'" data-post-id="'.$postID.'">'.$text.'</a>';
+			echo '<a href="#" class="featured-post-toggle '.$class.'" data-post-id="'.$postID.'"></a>';
 		}
 	}
 
