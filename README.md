@@ -3,7 +3,7 @@ This class allows you to add featured posts to your blog
 
 You can use this construction in WP_Query:
 ```php
- $new_query = new WP_Query(array(
+ $new_query = new WP_Query( array(
     'post_type' => 'post',
     'meta_query' => array(
          array(
@@ -11,7 +11,7 @@ You can use this construction in WP_Query:
              'value' => 'yes',
          ),
     )
-));
+) );
 ```
 
 Also you can check if this post featured:
